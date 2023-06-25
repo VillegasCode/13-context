@@ -33,7 +33,7 @@ export const AppRouter = () => {
               <NavLink to="/contacto">Contacto</NavLink>
             </li>
 
-            {usuario.nick !== null ? (
+            {usuario.hasOwnProperty("nick") && usuario.nick !== null ? (
               <>
                 <li>
                   <NavLink to="/">{usuario.nick}</NavLink>
