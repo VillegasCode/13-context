@@ -1,7 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PruebaContext } from '../context/PruebaContext';
 
 export const Login = () => {
+
+  // Vamos a guardar los datos mediante desestructuración
+  const {usuario, setUsuario} = useContext(PruebaContext);
+
+  const guardarDatos = e => {
+    e.preventDefault();
+
+    let usuarioIdentificado = {
+      nick: e.target.nick.value,
+      nombre: e.target.nombre.value,
+      web: e.target.web.value
+    };
+
+    setUsuario(usuarioIdentificado);
+  }
+
+
+
   return (
-    <div>Login</div>
+    <div>
+      <h1>Identifícate</h1>
+      <p>Página de Login</p>
+
+      <form className='login' onSubmit={guardarDatos}>
+        <input type='text' name='nick' placeholder='Nickname:' />
+        <input type='text' name='nombre' placeholder='Nombre:' />
+        <input type='text' name='web' placeholder='Web:' />
+
+        <input type='submit' value="Enviar" />
+      </form>
+    </div>
   )
 }
